@@ -1,0 +1,7 @@
+# Project dependencies
+node_modules
+yarn-error.log
+npm-debug.log
+
+# Build directory
+/output
