@@ -11,7 +11,7 @@ Instructions for exporting your information from WordPress [can be found here](h
 yarn
 
 # Convert your .xml file
-yarn run convert export.xml
+yarn convert export.xml
 ```
 
 Generated markdown files are found in the `output` folder.
@@ -43,7 +43,7 @@ folder belonging to the related markdown file.
 ```
 
 We only download images with urls starting with `http`, and by default
-require them to end with`png` or `jpg`. 
+require them to end with `png` or `jpg`. 
 
 This can be changed with `--filter-images=YOUR-REGEX`
 
