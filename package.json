@@ -23,7 +23,9 @@
     "node": ">=10.1"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^1.15.2"
+  },
   "scripts": {
     "start": "node src/index.js",
     "convert": "npm run start"
