@@ -22,7 +22,9 @@
   "engines": {
     "node": ">=10.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "yargs": "^12.0.2"
+  },
   "devDependencies": {
     "prettier": "^1.15.2"
   },
