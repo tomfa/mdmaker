@@ -23,13 +23,19 @@
     "node": ">=10.1"
   },
   "dependencies": {
+    "argparse": "^1.0.10",
+    "to-markdown": "^3.1.1",
+    "turndown": "^5.0.1",
+    "xml2js": "^0.4.19",
     "yargs": "^12.0.2"
   },
   "devDependencies": {
+    "jest": "^26.0.1",
     "prettier": "^1.15.2"
   },
   "scripts": {
     "start": "node src/index.js",
-    "convert": "npm run start"
+    "convert": "npm run start",
+    "test": "jest"
   }
 }
