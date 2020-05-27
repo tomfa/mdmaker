@@ -1,0 +1,31 @@
+{
+  "title": "Markdown Maker",
+  "name": "mdmaker",
+  "description": "Generating markdown files from XML",
+  "license": "MIT",
+  "keywords": [
+    "convert",
+    "generate",
+    "xml",
+    "gatsby",
+    "markdown",
+    "wordpress"
+  ],
+  "author": "Tomas Fagerbekk - tomas.a.fagerbekk@gmail.com",
+  "bugs": {
+    "url": "https://github.com/tomfa/mdmaker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomfa/mdmaker.git"
+  },
+  "engines": {
+    "node": ">=10.1"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/index.js",
+    "convert": "npm run start"
+  }
+}
