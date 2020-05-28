@@ -17,7 +17,7 @@ const argv = require("yargs")
   .default("p", "wordpress-xml")
   .describe("p", "Which parser to use for parsing input file.")
   .alias("t", "template")
-  .default("t", "gatsby-remark.md")
+  .default("t", "gatsby.mdx")
   .describe("t", "Which template to use for generating files.")
   .help("h")
   .alias("h", "help").argv;

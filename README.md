@@ -86,7 +86,7 @@ from the input file.
 
 The template used can be changed with `--template=my-file.md`
 
-**Default: `gatsby-remark.md`** 
+**Default: `gatsby.md`** 
 
 Available variables are:
 - `author`: The author of the post
