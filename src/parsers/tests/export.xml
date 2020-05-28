@@ -62,34 +62,34 @@
 	<generator>https://wordpress.org/?v=4.7.17</generator>
 
 	<item>
-		<title>Freshdesk observer</title>
-		<link>http://notes.webutvikling.org/adding-freshdesk-to-slack/screen-shot-2016-08-02-at-15-27-24/</link>
-		<pubDate>Tue, 02 Aug 2016 13:28:19 +0000</pubDate>
+		<title>freshdesk</title>
+		<link>http://notes.webutvikling.org/adding-freshdesk-to-slack/freshdesk/</link>
+		<pubDate>Tue, 02 Aug 2016 14:26:32 +0000</pubDate>
 		<dc:creator><![CDATA[tomfa]]></dc:creator>
-		<guid isPermaLink="false">http://notes.webutvikling.org/wp-content/uploads/2016/08/Screen-Shot-2016-08-02-at-15.27.24.png</guid>
+		<guid isPermaLink="false">http://notes.webutvikling.org/wp-content/uploads/2016/08/freshdesk.jpg</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>371</wp:post_id>
-		<wp:post_date><![CDATA[2016-08-02 13:28:19]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2016-08-02 13:28:19]]></wp:post_date_gmt>
+		<wp:post_id>381</wp:post_id>
+		<wp:post_date><![CDATA[2016-08-02 14:26:32]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2016-08-02 14:26:32]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[screen-shot-2016-08-02-at-15-27-24]]></wp:post_name>
+		<wp:post_name><![CDATA[freshdesk]]></wp:post_name>
 		<wp:status><![CDATA[inherit]]></wp:status>
 		<wp:post_parent>370</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type><![CDATA[attachment]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-		<wp:attachment_url><![CDATA[http://notes.webutvikling.org/wp-content/uploads/2016/08/Screen-Shot-2016-08-02-at-15.27.24.png]]></wp:attachment_url>
+		<wp:attachment_url><![CDATA[http://notes.webutvikling.org/wp-content/uploads/2016/08/freshdesk.jpg]]></wp:attachment_url>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2016/08/Screen-Shot-2016-08-02-at-15.27.24.png]]></wp:meta_value>
+			<wp:meta_value><![CDATA[2016/08/freshdesk.jpg]]></wp:meta_value>
 		</wp:postmeta>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-			<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1668;s:6:"height";i:546;s:4:"file";s:46:"2016/08/Screen-Shot-2016-08-02-at-15.27.24.png";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:46:"Screen-Shot-2016-08-02-at-15.27.24-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:6:"medium";a:4:{s:4:"file";s:45:"Screen-Shot-2016-08-02-at-15.27.24-300x98.png";s:5:"width";i:300;s:6:"height";i:98;s:9:"mime-type";s:9:"image/png";}s:12:"medium_large";a:4:{s:4:"file";s:46:"Screen-Shot-2016-08-02-at-15.27.24-768x251.png";s:5:"width";i:768;s:6:"height";i:251;s:9:"mime-type";s:9:"image/png";}s:5:"large";a:4:{s:4:"file";s:47:"Screen-Shot-2016-08-02-at-15.27.24-1024x335.png";s:5:"width";i:1024;s:6:"height";i:335;s:9:"mime-type";s:9:"image/png";}s:14:"post-thumbnail";a:4:{s:4:"file";s:46:"Screen-Shot-2016-08-02-at-15.27.24-825x510.png";s:5:"width";i:825;s:6:"height";i:510;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+			<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1280;s:6:"height";i:720;s:4:"file";s:21:"2016/08/freshdesk.jpg";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:21:"freshdesk-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:21:"freshdesk-300x169.jpg";s:5:"width";i:300;s:6:"height";i:169;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:21:"freshdesk-768x432.jpg";s:5:"width";i:768;s:6:"height";i:432;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:22:"freshdesk-1024x576.jpg";s:5:"width";i:1024;s:6:"height";i:576;s:9:"mime-type";s:10:"image/jpeg";}s:13:"featured-full";a:4:{s:4:"file";s:21:"freshdesk-750x429.jpg";s:5:"width";i:750;s:6:"height";i:429;s:9:"mime-type";s:10:"image/jpeg";}s:15:"featured-teaser";a:4:{s:4:"file";s:21:"freshdesk-450x253.jpg";s:5:"width";i:450;s:6:"height";i:253;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>

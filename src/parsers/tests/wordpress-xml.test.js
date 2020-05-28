@@ -29,6 +29,15 @@ describe("Wordpress XML parser", () => {
     assert(title === "Adding Freshdesk to Slack");
   });
 
+  test("extracts feature image url", () => {
+    const { image } = post;
+
+    assert(
+      image ===
+        "http://notes.webutvikling.org/wp-content/uploads/2016/08/freshdesk.jpg"
+    );
+  });
+
   test("identifies post status", () => {
     const { status } = post;
 
