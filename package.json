@@ -21,7 +21,7 @@
     "url": "https://github.com/tomfa/mdmaker.git"
   },
   "engines": {
-    "node": ">=10.1"
+    "node": ">=10.12"
   },
   "dependencies": {
     "argparse": "^1.0.10",
