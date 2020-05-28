@@ -37,7 +37,7 @@ function parseXMLPost(post) {
     url,
     title,
     date: publishedDate,
-    data: content,
+    content,
     status,
     slug,
     categories,

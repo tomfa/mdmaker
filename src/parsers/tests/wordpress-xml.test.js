@@ -5,12 +5,21 @@ const assert = (anything) => expect(anything).toBe(true);
 
 describe("Wordpress XML parser", () => {
   const path = resolve(__dirname, "./export.xml");
+
   let posts;
+  let post;
+
   beforeAll(async () => {
     posts = await parseWordpressXML(path);
+    post = posts[0];
   });
+
   test("ignores non-post item", () => {
     expect(posts.length).toBe(1);
+  });
+
+  test("parses content to html", () => {
+    assert(post.content.includes("<li>Search for slack</li>"));
   });
 
   test("identifies wordpress title and slug", () => {
