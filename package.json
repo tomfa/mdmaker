@@ -38,6 +38,7 @@
   "scripts": {
     "start": "node src/index.js",
     "convert": "node src/index.js",
-    "test": "jest"
+    "test": "jest",
+    "tdd": "jest --watch"
   }
 }
