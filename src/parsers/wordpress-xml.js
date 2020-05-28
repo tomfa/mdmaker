@@ -1,4 +1,4 @@
-const swear = require("../utils/promiser");
+const swear = require("../utils/promiser").swear;
 const xml2js = require("xml2js");
 
 const readFile = require("../utils/file-handler").readFile;
@@ -7,7 +7,7 @@ const ParseException = require("../utils/errors").ParseException;
 async function process(path) {
   try {
     const parser = new xml2js.Parser();
-    const data = await swear(readFile, path);
+    const data = await readFile(path);
     const result = await swear(parser.parseString, data);
     const xmlData = result.rss.channel[0].item;
     const xmlPosts = xmlData.filter(

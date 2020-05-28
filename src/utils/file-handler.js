@@ -2,6 +2,8 @@ const fs = require("fs");
 const http = require("http");
 const https = require("https");
 
+const { makePromise } = require("./promiser");
+
 const FileWriteException = require("./errors").FileWriteException;
 
 function downloadFiles({ urls, to }) {
@@ -46,6 +48,6 @@ async function downloadFile({ url, path }) {
   });
 }
 
-exports.readFile = fs.readFile;
-exports.writeFile = fs.writeFile;
+exports.readFile = makePromise(fs.readFile);
+exports.writeFile = makePromise(fs.writeFile);
 exports.downloadFiles = downloadFiles;
