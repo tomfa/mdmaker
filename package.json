@@ -3,6 +3,7 @@
   "name": "mdmaker",
   "description": "Generating markdown files from XML",
   "license": "MIT",
+  "version": "1.0",
   "keywords": [
     "convert",
     "generate",
@@ -36,7 +37,7 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "convert": "npm run start",
+    "convert": "node src/index.js",
     "test": "jest"
   }
 }

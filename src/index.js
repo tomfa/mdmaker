@@ -1,4 +1,5 @@
 const argv = require("yargs")
+  .usage("yarn convert <input-file> [args]")
   .example(
     "yarn convert wordpress.xml",
     "generates markdown files based on wordpress xml export"
