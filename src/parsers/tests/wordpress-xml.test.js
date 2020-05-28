@@ -15,7 +15,7 @@ describe("Wordpress XML parser", () => {
   });
 
   test("ignores non-post item", () => {
-    expect(posts.length).toBe(1);
+    assert(posts.length === 1);
   });
 
   test("parses content to html", () => {
@@ -23,37 +23,33 @@ describe("Wordpress XML parser", () => {
   });
 
   test("identifies wordpress title and slug", () => {
-    const { slug, title } = posts[0];
+    const { slug, title } = post;
 
-    expect(slug).toBe("adding-freshdesk-to-slack");
-    expect(title).toBe("Adding Freshdesk to Slack");
+    assert(slug === "adding-freshdesk-to-slack");
+    assert(title === "Adding Freshdesk to Slack");
   });
 
   test("identifies post status", () => {
-    const { status } = posts[0];
+    const { status } = post;
 
-    expect(status).toBe("publish");
+    assert(status === "publish");
   });
 
   test("returns a Date object for 'date'", () => {
-    const post = posts[0];
-    expect(post.date).toBeInstanceOf(Date);
+    assert(post.date instanceof Date);
   });
 
   test("finds img urls in content", () => {
-    const post = posts[0];
     expect(post.filePaths).toEqual([
       "http://notes.webutvikling.org/wp-content/uploads/2016/08/Screen-Shot-2016-08-02-at-15.27.24-300x98.png",
     ]);
   });
 
   test("finds find tag", () => {
-    const post = posts[0];
     expect(post.tags).toEqual(["freshdesk", "slack"]);
   });
 
   test("finds find categories", () => {
-    const post = posts[0];
     expect(post.categories).toEqual(["Slack"]);
   });
 });
