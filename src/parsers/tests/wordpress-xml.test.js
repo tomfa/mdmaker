@@ -1,6 +1,8 @@
 const parseWordpressXML = require("../wordpress-xml");
 const resolve = require("path").resolve;
 
+const assert = (anything) => expect(anything).toBe(true);
+
 describe("Wordpress XML parser", () => {
   const path = resolve(__dirname, "./export.xml");
   let posts;
