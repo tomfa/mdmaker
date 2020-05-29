@@ -5,8 +5,8 @@ const argv = require("yargs")
     "generates markdown files based on wordpress xml export"
   )
   .alias("f", "folder-format")
-  .default("f", "yyyy-mm-dd-slug")
-  .describe("f", "Format of output folders.")
+  .default("f", 'yyyy-mm-dd-"slug"')
+  .describe("f", "Format of post folder name.")
   .alias("i", "filter-images")
   .default("i", "^http.*.(png|jpg)")
   .describe(

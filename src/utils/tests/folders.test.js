@@ -10,12 +10,13 @@ describe("folder utils", () => {
   beforeAll(() => {
     post = {
       slug: "my-post-name",
+      author: "author-name",
       date: new Date("2020", "0", "3"),
     };
   });
 
   describe("getFolderName", () => {
-    const defaultFolderFormat = "yyyy-mm-dd-slug";
+    const defaultFolderFormat = 'yyyy-mm-dd-"slug"';
     let defaultFolderName;
 
     beforeAll(() => {
@@ -26,8 +27,24 @@ describe("folder utils", () => {
       assert(defaultFolderName.startsWith("2020-01-03"));
     });
 
-    test("Replaces slug with slug of post", () => {
+    test('Replaces "slug" with slug of post', () => {
       assert(defaultFolderName.endsWith("-my-post-name"));
+    });
+
+    test('Replaces "author" with author of post', () => {
+      const format = 'yyyy-mm-dd-"author"';
+
+      const name = getFolderName(post, format);
+
+      assert(name === "2020-01-03-author-name");
+    });
+
+    test("Allows custom text", () => {
+      const format = 'yyyy-mm-dd-"author-i-am-superman"';
+
+      const name = getFolderName(post, format);
+
+      assert(name === "2020-01-03-author-name-i-am-superman");
     });
   });
 

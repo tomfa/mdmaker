@@ -23,7 +23,9 @@ Each post is put in an own individual folder.
 ``` 
 Its folder name can be specified with `--folder-format=YOUR-FORMAT`
 
-**Default: `yyyy-mm-dd-slug`** 
+**Default: `yyyy-mm-dd-"slug"`** 
+
+Note that quotes are used to surround text that should *not* be formatted as date.
 
 Replaced values are:
 
