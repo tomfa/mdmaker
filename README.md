@@ -1,30 +1,30 @@
-# md-maker
+# md-export
 
-[md-maker](https://github.com/tomfa/md-maker) can convert content between formats.
+[md-export](https://github.com/tomfa/md-maker) can convert content between formats.
 It comes with parsers and templates for converting Wordpress XML to Markdown or HTML, but you can also specify your own.
 
 
 ## Installation
 ```
-yarn add md-maker
+yarn add md-export
 ```
 
 ## Usage
 ```
 // Convert Wordpress xml to markdown
-yarn run mdma export.xml
+yarn run mdex export.xml
 
 // Download images references to in text
-yarn run mdma export.xml  --download-images
+yarn run mdex export.xml  --download-images
 
 // Converts Wordpress xml to html
-yarn run mdma export.xml --html
+yarn run mdex export.xml --html
 
 // Using your own output template
-yarn run mdma export.xml --template=my-template.md
+yarn run mdex export.xml --template=my-template.md
 
 // ...or your own parser
-yarn run mdma anything.xml --parser=my-soap-parser.js
+yarn run mdex anything.xml --parser=my-soap-parser.js
 ```
 
 Generated files, and accompanied images scraped from the post are found in the output folder (default: `output`s).

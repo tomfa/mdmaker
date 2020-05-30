@@ -1,7 +1,7 @@
 {
-  "title": "Markdown Maker",
-  "name": "md-maker",
-  "description": "Convert Wordpress .xml to Gatsby .md",
+  "title": "Markdown Export",
+  "name": "md-export",
+  "description": "Customizable parse + convert text",
   "license": "MIT",
   "version": "1.0.0",
   "keywords": [
@@ -24,7 +24,7 @@
     "node": ">=10.12"
   },
   "bin": {
-    "mdma": "./bin/mdmaker.js"
+    "mdex": "./bin/mdmaker.js"
   },
   "main": "src/index.js",
   "dependencies": {
