@@ -1,9 +1,9 @@
 {
   "title": "Markdown Maker",
-  "name": "mdmaker",
-  "description": "Generating markdown files from XML",
+  "name": "md-maker",
+  "description": "Convert Wordpress .xml to Gatsby .md",
   "license": "MIT",
-  "version": "1.0",
+  "version": "1.0.0",
   "keywords": [
     "convert",
     "generate",
@@ -23,6 +23,10 @@
   "engines": {
     "node": ">=10.12"
   },
+  "bin": {
+    "mdma": "./bin/mdmaker.js"
+  },
+  "main": "src/index.js",
   "dependencies": {
     "dateformat": "^3.0.3",
     "turndown": "^6.0.0",
@@ -34,8 +38,7 @@
     "prettier": "^2.0.5"
   },
   "scripts": {
-    "start": "node src/index.js",
-    "convert": "node src/index.js",
+    "patch-release": "npm test && npm version patch && npm publish && git push --follow-tags",
     "test": "jest",
     "tdd": "jest --watch"
   }
