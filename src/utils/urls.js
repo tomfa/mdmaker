@@ -41,10 +41,13 @@ function extractUrls({ content, regexp = defaultRegex, filterDomain } = {}) {
 }
 
 function findBaseUrl(url) {
-  return url.split("/", 3).join("/");
+  return url && url.split("/", 3).join("/");
 }
 
 function makeUrlsAbsolute({ content, path } = {}) {
+  if (!content) {
+    return "";
+  }
   let url = path.endsWith("/") ? path : `${path}/`;
   let baseUrl = findBaseUrl(url);
   let cleanedContent = content;

@@ -6,8 +6,8 @@ const { getFolderName, createFolder } = require("./utils/folders");
 const { htmlToMd } = require("./utils/markdown");
 const { insertVariables } = require("./utils/templates");
 
-const defaultParser = resolve(__dirname, "./parsers/wordpress-xml");
-const defaultTemplate = resolve(__dirname, "./templates/gatsby.md");
+const defaultParser = "./parsers/wordpress-xml";
+const defaultTemplate = "./templates/gatsby.md";
 
 const argv = require("yargs")
   .usage("yarn convert <input-file> [args]")
@@ -15,12 +15,15 @@ const argv = require("yargs")
     "yarn convert wordpress.xml",
     "generates markdown files based on wordpress xml export"
   )
+  .alias("d", "download-images")
+  .default("d", false)
+  .describe("d", "Downloads images refernces to poot folder.")
   .alias("f", "folder-format")
   .default("f", 'yyyy-mm-dd-"slug"')
-  .describe("f", "Format of post folder name.")
+  .describe("f", "Format of individual post folder name.")
   .alias("o", "output-dir")
   .default("o", "output")
-  .describe("o", "Folder in which to put markdown posts")
+  .describe("o", "Folder in which to put posts")
   .alias("i", "filter-images")
   .default("i", urlUtils.defaultRegex)
   .describe(
@@ -30,8 +33,8 @@ const argv = require("yargs")
   .alias("p", "parser")
   .default("p", defaultParser)
   .describe("p", "Which parser to use for parsing input file.")
-  .alias("post", "post-filter")
-  .describe("post", "Specify post slug if wish to convert a single post")
+  .alias("s", "filter-slug")
+  .describe("s", "Specify post slug if wish to convert a single post")
   .alias("t", "template")
   .default("t", defaultTemplate)
   .describe("t", "Which template to use for generating files.")
@@ -40,13 +43,13 @@ const argv = require("yargs")
 
 const parser = require(argv.parser !== defaultParser
   ? resolve(process.cwd(), argv.parser)
-  : parser);
+  : resolve(__dirname, argv.parser));
 
 const template =
   argv.template !== defaultTemplate
     ? resolve(process.cwd(), argv.template)
-    : template;
-const { folderFormat, filterImages, outputDir, filterSlugs } = argv;
+    : resolve(__dirname, argv.template);
+const { downloadImages, folderFormat, filterImages, outputDir, slug } = argv;
 const inputArg = (argv._.length && argv._[0]) || null;
 
 if (!inputArg) {
@@ -57,7 +60,9 @@ if (!inputArg) {
 const inputFile = resolve(process.cwd(), inputArg);
 
 async function run() {
-  const posts = (await parser(inputFile)).filter(p => (!postFilter) || p.slug === postFilter);
+  const posts = (await parser(inputFile)).filter(
+    (p) => !slug || p.slug === slug
+  );
   const markdownTemplate = await readFile(template, "utf-8");
 
   console.log(`Converting ${posts.length} posts...`);
@@ -69,29 +74,35 @@ async function run() {
     console.log(`Converting ${post.slug} -> ${outputDir}`);
     await createFolder(outputFolder);
 
-    // Download extra files
-    let htmlContent = urlUtils.makeUrlsAbsolute({
-      content: post.content,
-      path: post.url,
-    });
+    let htmlContent = post.content;
 
-    const fileUrls = urlUtils.extractUrls({
-      content: htmlContent + (post.image ? ` <img src="${post.image}" />` : ""),
-      filterDomain: baseUrl,
-      regexp: filterImages,
-    });
-    post.image = urlUtils.makeUrlRelative({ url: post.image });
+    if (downloadImages) {
+      // Find files to download
+      htmlContent = urlUtils.makeUrlsAbsolute({
+        content: post.content,
+        path: post.url,
+      });
 
-    downloadFiles({ urls: fileUrls, to: outputFolder });
+      const fileUrls = urlUtils.extractUrls({
+        content:
+          htmlContent + (post.image ? ` <img src="${post.image}" />` : ""),
+        filterDomain: baseUrl,
+        regexp: filterImages,
+      });
 
-    // Make downloaded files references as local files
-    const urlMapping = fileUrls.map((url) => ({
-      external: url,
-      internal: urlUtils.makeUrlRelative({ url }),
-    }));
-    urlMapping.forEach(
-      (m) => (htmlContent = htmlContent.replace(m.external, m.internal))
-    );
+      // Download files
+      downloadFiles({ urls: fileUrls, to: outputFolder });
+
+      // Make downloaded files references as local files
+      post.image = urlUtils.makeUrlRelative({ url: post.image });
+      const urlMapping = fileUrls.map((url) => ({
+        external: url,
+        internal: urlUtils.makeUrlRelative({ url }),
+      }));
+      urlMapping.forEach(
+        (m) => (htmlContent = htmlContent.replace(m.external, m.internal))
+      );
+    }
 
     // Write as markdown
     const markdownContent = htmlToMd(htmlContent);
