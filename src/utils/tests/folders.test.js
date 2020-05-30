@@ -2,8 +2,6 @@ const { getFolderName, createFolder } = require("../folders");
 const { resolve } = require("path");
 const fs = require("fs");
 
-const assert = (anything) => expect(anything).toBe(true);
-
 describe("folder utils", () => {
   let post;
 
@@ -24,11 +22,11 @@ describe("folder utils", () => {
     });
 
     test("Default folder name formats date", () => {
-      assert(defaultFolderName.startsWith("2020-01-03"));
+      expect(defaultFolderName.startsWith("2020-01-03")).toBe(true);
     });
 
     test('Replaces "slug" with slug of post', () => {
-      assert(defaultFolderName.endsWith("-my-post-name"));
+      expect(defaultFolderName.endsWith("-my-post-name")).toBe(true);
     });
 
     test('Replaces "author" with author of post', () => {
@@ -36,7 +34,7 @@ describe("folder utils", () => {
 
       const name = getFolderName(post, format);
 
-      assert(name === "2020-01-03-author-name");
+      expect(name === "2020-01-03-author-name").toBe(true);
     });
 
     test("Allows custom text", () => {
@@ -44,7 +42,7 @@ describe("folder utils", () => {
 
       const name = getFolderName(post, format);
 
-      assert(name === "2020-01-03-author-name-i-am-superman");
+      expect(name).toBe("2020-01-03-author-name-i-am-superman");
     });
   });
 
@@ -63,7 +61,7 @@ describe("folder utils", () => {
     beforeAll(cleanUp); // In case of failed run
 
     test("creates a folder", async () => {
-      expect(!fs.existsSync(folderName)).toBe(true);
+      expect(fs.existsSync(folderName)).toBe(false);
 
       await createFolder(folderName);
 
@@ -71,7 +69,7 @@ describe("folder utils", () => {
     });
 
     test("creates parent folders", async () => {
-      expect(!fs.existsSync(nestedFolderName)).toBe(true);
+      expect(fs.existsSync(nestedFolderName)).toBe(false);
 
       await createFolder(nestedFolderName);
 
