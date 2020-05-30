@@ -26,7 +26,10 @@ function parseXMLPost(post, getItem) {
   const author = post["dc:creator"][0];
   const url = post.guid[0]["_"];
   const title = post.title[0];
-  const publishedDate = new Date(post.pubDate);
+  let publishedDate = new Date(post.pubDate);
+  if (isNaN(publishedDate)) {
+    publishedDate = new Date(post['wp:post_date']);
+  }
   const content = post["content:encoded"][0];
   const status = post["wp:status"][0];
   const slug = post["wp:post_name"][0];
