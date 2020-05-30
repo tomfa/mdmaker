@@ -6,6 +6,9 @@ const { getFolderName, createFolder } = require("./utils/folders");
 const { htmlToMd } = require("./utils/markdown");
 const { insertVariables } = require("./utils/templates");
 
+const defaultParser = resolve(__dirname, "./parsers/wordpress-xml");
+const defaultTemplate = resolve(__dirname, "./templates/gatsby.md");
+
 const argv = require("yargs")
   .usage("yarn convert <input-file> [args]")
   .example(
@@ -25,24 +28,33 @@ const argv = require("yargs")
     "Regex filter for which linked images to download and replace urls."
   )
   .alias("p", "parser")
-  .default("p", resolve(__dirname, "./parsers/wordpress-xml"))
+  .default("p", defaultParser)
   .describe("p", "Which parser to use for parsing input file.")
   .alias("post", "post-filter")
   .describe("post", "Specify post slug if wish to convert a single post")
   .alias("t", "template")
-  .default("t", resolve(__dirname, "./templates/gatsby.md"))
+  .default("t", defaultTemplate)
   .describe("t", "Which template to use for generating files.")
   .help("h")
   .alias("h", "help").argv;
 
-const parser = require(argv.parser);
-const { template, folderFormat, filterImages, outputDir, postFilter } = argv;
-const inputFile = (argv._.length && argv._[0]) || null;
+const parser = require(argv.parser !== defaultParser
+  ? resolve(process.cwd(), argv.parser)
+  : parser);
 
-if (!inputFile) {
+const template =
+  argv.template !== defaultTemplate
+    ? resolve(process.cwd(), argv.template)
+    : template;
+const { folderFormat, filterImages, outputDir, filterSlugs } = argv;
+const inputArg = (argv._.length && argv._[0]) || null;
+
+if (!inputArg) {
   console.log("Missing input file. Run with --help for assistance.");
   return;
 }
+
+const inputFile = resolve(process.cwd(), inputArg);
 
 async function run() {
   const posts = (await parser(inputFile)).filter(p => (!postFilter) || p.slug === postFilter);
