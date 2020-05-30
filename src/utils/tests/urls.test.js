@@ -1,25 +1,20 @@
 const utils = require("../urls");
 
 describe("urls utils", () => {
-  describe("makeUrlsRelative", () => {
+  describe("makeUrlRelative", () => {
     test("changes urls to relative", () => {
-      const content = '<img src="http://google.com/image.png" />';
-      const urls = ["http://google.com/image.png"];
-      expect(utils.makeUrlsRelative({ content, urls })).toBe(
-        '<img src="./image.png" />'
-      );
+      const url = "http://google.com/image.png";
+      expect(utils.makeUrlRelative({ url })).toBe("./image.png");
     });
     test("allows added custom url prefix", () => {
-      const content = '<img src="http://google.com/image.png" />';
-      const urls = ["http://google.com/image.png"];
-      expect(
-        utils.makeUrlsRelative({ content, urls, pathPrefix: "./images/" })
-      ).toBe('<img src="./images/image.png" />');
+      const url = "http://google.com/image.png";
+      expect(utils.makeUrlRelative({ url, pathPrefix: "./images/" })).toBe(
+        "./images/image.png"
+      );
     });
-    test("ignores other urls", () => {
-      const content = '<img src="http://google.com/image.png" />';
-      const urls = [];
-      expect(utils.makeUrlsRelative({ content, urls })).toBe(content);
+    test("ignores already relative urls", () => {
+      const url = "/image.png";
+      expect(utils.makeUrlRelative({ url })).toBe(url);
     });
   });
 

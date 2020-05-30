@@ -1,18 +1,9 @@
-function cleanUrl({ url, pathPrefix }) {
-  // Accepts an url and returns the last part, prepended b
-  if (!url) {
-    return;
+function makeUrlRelative({ url, pathPrefix = "./" }) {
+  if (!url || !url.startsWith("http")) {
+    return url;
   }
   const name = url.split("/").reverse()[0];
   return pathPrefix + name;
-}
-
-function makeUrlsRelative({ content, urls, pathPrefix = "./" }) {
-  let cleanedContent = content;
-  urls.forEach((url) => {
-    cleanedContent = cleanedContent.replace(url, cleanUrl({ url, pathPrefix }));
-  });
-  return cleanedContent;
 }
 
 const IMAGE_FILE_EXT = [
@@ -48,9 +39,13 @@ function extractUrls({ content, regexp = defaultRegex, filterDomain } = {}) {
   return matches.filter((m) => (filterDomain ? m.includes(filterDomain) : m));
 }
 
+function findBaseUrl(url) {
+  return url.split("/", 3).join("/");
+}
+
 function makeUrlsAbsolute({ content, path } = {}) {
   let url = path.endsWith("/") ? path : `${path}/`;
-  let baseUrl = url.split("/", 3).join("/");
+  let baseUrl = findBaseUrl(url);
   let cleanedContent = content;
   const filePattern = new RegExp(/(?:(src|href)="((?:\/|\.).*?)")/, "gi");
 
@@ -64,4 +59,9 @@ function makeUrlsAbsolute({ content, path } = {}) {
   return cleanedContent;
 }
 
-module.exports = { extractUrls, makeUrlsRelative, makeUrlsAbsolute };
+module.exports = {
+  extractUrls,
+  findBaseUrl,
+  makeUrlRelative,
+  makeUrlsAbsolute,
+};
