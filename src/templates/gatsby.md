@@ -1,5 +1,5 @@
 ---
-title: {{ title }}
+title: "{{ title }}"
 date: {{ date }}
 image: {{ image }}
 tags: {{ tags }}
