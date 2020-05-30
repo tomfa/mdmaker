@@ -54,7 +54,7 @@ async function run() {
     const postFolder = getFolderName(post, folderFormat);
     const outputFolder = `${outputDir}/${postFolder}`;
 
-    console.log(`Creating ${outputFolder}`);
+    console.log(`Converting ${post.slug} -> ${outputDir}`);
     await createFolder(outputFolder);
 
     // Download extra files

@@ -25,8 +25,6 @@ function downloadFiles({ urls, to }) {
 }
 
 async function downloadFile({ url, path }) {
-  console.log(`Storing ${path} from ${url}`);
-
   return new Promise((resolve, reject) => {
     try {
       const file = fs.createWriteStream(path);
