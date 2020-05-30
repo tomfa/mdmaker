@@ -23,8 +23,8 @@ const IMAGE_FILE_EXT = [
 ];
 
 let fileExtRegex = "(?:\\." + IMAGE_FILE_EXT.join("|") + ")";
-let hrefRegex = `(?:href="(http.*?${fileExtRegex}))"`;
-let imgRegex = '(?:src="(http.*?)")';
+let hrefRegex = `(?:href="(http[^"]*?${fileExtRegex}))"`;
+let imgRegex = '(?:src="(http[^"]*?)")';
 let defaultRegex = `${imgRegex}|${hrefRegex}`;
 
 function extractUrls({ content, regexp = defaultRegex, filterDomain } = {}) {

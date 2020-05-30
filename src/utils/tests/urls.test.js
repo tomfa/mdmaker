@@ -90,6 +90,16 @@ describe("urls utils", () => {
       expect(utils.extractUrls({ content })).not.toContain("./logo.svg");
     });
 
+    test("ignores href links followed by img", () => {
+      const content = `
+      <a href="https://google.com">Don't download me</a> please.
+      <img src="http://unsplashed/google" />
+      `;
+      const urls = utils.extractUrls({ content });
+      expect(urls.length).toBe(1);
+      expect(urls).toContain("http://unsplashed/google");
+    });
+
     test("filters urls if filterDomain is specified", () => {
       expect(
         utils.extractUrls({ content, filterDomain: "placekitten.com" })
