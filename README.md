@@ -78,7 +78,6 @@ path of file, and returns a list of an objects with the following keys:
 - `excerpt`: The excerpt of the post
 - `slug`: The url slug of the original post
 - `title`: The title of the post
-- `filePaths`: A list of URLs of images to be copied locally
 
 ### Generated markdown templates
 

@@ -48,12 +48,6 @@ describe("Wordpress XML parser", () => {
     assert(post.date instanceof Date);
   });
 
-  test("finds img urls in content", () => {
-    expect(post.filePaths).toEqual([
-      "http://notes.webutvikling.org/wp-content/uploads/2016/08/Screen-Shot-2016-08-02-at-15.27.24-300x98.png",
-    ]);
-  });
-
   test("finds find tag", () => {
     expect(post.tags).toEqual(["freshdesk", "slack"]);
   });

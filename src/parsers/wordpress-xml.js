@@ -34,7 +34,6 @@ function parseXMLPost(post, getItem) {
 
   const categories = parseCategories(post);
   const tags = parseTags(post);
-  const filePaths = getFilePaths(content);
 
   return {
     author,
@@ -47,23 +46,7 @@ function parseXMLPost(post, getItem) {
     slug,
     categories,
     tags,
-    filePaths,
   };
-}
-
-function getFilePaths(content) {
-  /*
-   * Returns all url paths that can be considered to be downloaded and replaced
-   * */
-  const filePattern = new RegExp('(?:src="(.*?)")', "gi");
-  const matches = [];
-
-  let m;
-  while ((m = filePattern.exec(content)) !== null) {
-    matches.push(m[1]);
-  }
-
-  return matches;
 }
 
 function parseCategories(post) {
