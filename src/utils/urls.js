@@ -22,10 +22,11 @@ const IMAGE_FILE_EXT = [
   "webp",
 ];
 
-let fileExtRegex = "(?:\\." + IMAGE_FILE_EXT.join("|") + ")";
+let fileExtRegex = "(?:\\.(?:" + IMAGE_FILE_EXT.join("|") + "))";
 let hrefRegex = `(?:href="(http[^"]*?${fileExtRegex}))"`;
 let imgRegex = '(?:src="(http[^"]*?)")';
-let defaultRegex = `${imgRegex}|${hrefRegex}`;
+
+const defaultRegex = `${imgRegex}|${hrefRegex}`;
 
 function extractUrls({ content, regexp = defaultRegex, filterDomain } = {}) {
   const filePattern = new RegExp(regexp, "gi");
@@ -60,6 +61,7 @@ function makeUrlsAbsolute({ content, path } = {}) {
 }
 
 module.exports = {
+  defaultRegex,
   extractUrls,
   findBaseUrl,
   makeUrlRelative,

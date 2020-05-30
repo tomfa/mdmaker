@@ -19,7 +19,7 @@ const argv = require("yargs")
   .default("o", "output")
   .describe("o", "Folder in which to put markdown posts")
   .alias("i", "filter-images")
-  .default("i", "^http.*.(png|jpg)")
+  .default("i", urlUtils.defaultRegex)
   .describe(
     "i",
     "Regex filter for which linked images to download and replace urls."
@@ -66,6 +66,7 @@ async function run() {
     const fileUrls = urlUtils.extractUrls({
       content: htmlContent + (post.image ? ` <img src="${post.image}" />` : ""),
       filterDomain: baseUrl,
+      regexp: filterImages,
     });
     post.image = urlUtils.makeUrlRelative({ url: post.image });
 
