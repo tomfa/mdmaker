@@ -32,7 +32,10 @@ function parseXMLPost(post, getItem) {
   }
   const content = post["content:encoded"][0];
   const status = post["wp:status"][0];
-  const slug = post["wp:post_name"][0];
+  let slug = post["wp:post_name"][0];
+  if (!slug) {
+    slug = post.title[0].toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')
+  }
   const image = parseFeaturedImageUrl(post, getItem);
 
   const categories = parseCategories(post);
