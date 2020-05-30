@@ -23,6 +23,36 @@ describe("urls utils", () => {
     });
   });
 
+  describe("makeUrlsAbsolute", () => {
+    const content = `
+      <a href="/">home</a>
+      <img src="./relative-cat.jpg" />
+      <a href="https://github.com">
+        <img src="https://placekitten.com/408/287" />
+      </a>
+      `;
+    const path = "http://mypage.com/post/mypost/";
+    let cleaned;
+
+    beforeAll(() => {
+      cleaned = utils.makeUrlsAbsolute({ content, path });
+    });
+
+    test("replaces relative urls with absolute url", () => {
+      expect(cleaned).toContain(`<a href="http://mypage.com/">home</a>`);
+      expect(cleaned).toContain(
+        `<img src="http://mypage.com/post/mypost/relative-cat.jpg" />`
+      );
+    });
+
+    test("leaves non-relative urls as is", () => {
+      expect(cleaned).toContain(`<a href="https://github.com">`);
+      expect(cleaned).toContain(
+        `<img src="https://placekitten.com/408/287" />`
+      );
+    });
+  });
+
   describe("extractUrls", () => {
     const content = `
       <a href="#kitten"><h1 id="kitten">Want a cat?</h1></a> 

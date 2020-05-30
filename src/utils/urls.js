@@ -48,4 +48,20 @@ function extractUrls({ content, regexp = defaultRegex, filterDomain } = {}) {
   return matches.filter((m) => (filterDomain ? m.includes(filterDomain) : m));
 }
 
-module.exports = { extractUrls, makeUrlsRelative };
+function makeUrlsAbsolute({ content, path } = {}) {
+  let url = path.endsWith("/") ? path : `${path}/`;
+  let baseUrl = url.split("/", 3).join("/");
+  let cleanedContent = content;
+  const filePattern = new RegExp(/(?:(src|href)="((?:\/|\.).*?)")/, "gi");
+
+  let m;
+  while ((m = filePattern.exec(content)) !== null) {
+    let absoluteUrl = m[2].startsWith("/") ? baseUrl + m[2] : url + m[2];
+    absoluteUrl = absoluteUrl.replace("/./", "/");
+    cleanedContent = cleanedContent.replace(m[0], `${m[1]}="${absoluteUrl}"`);
+  }
+
+  return cleanedContent;
+}
+
+module.exports = { extractUrls, makeUrlsRelative, makeUrlsAbsolute };
