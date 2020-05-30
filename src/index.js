@@ -27,6 +27,8 @@ const argv = require("yargs")
   .alias("p", "parser")
   .default("p", resolve(__dirname, "./parsers/wordpress-xml"))
   .describe("p", "Which parser to use for parsing input file.")
+  .alias("post", "post-filter")
+  .describe("post", "Specify post slug if wish to convert a single post")
   .alias("t", "template")
   .default("t", resolve(__dirname, "./templates/gatsby.md"))
   .describe("t", "Which template to use for generating files.")
@@ -34,7 +36,7 @@ const argv = require("yargs")
   .alias("h", "help").argv;
 
 const parser = require(argv.parser);
-const { template, folderFormat, filterImages, outputDir } = argv;
+const { template, folderFormat, filterImages, outputDir, postFilter } = argv;
 const inputFile = (argv._.length && argv._[0]) || null;
 
 if (!inputFile) {
@@ -43,7 +45,7 @@ if (!inputFile) {
 }
 
 async function run() {
-  const posts = await parser(inputFile);
+  const posts = (await parser(inputFile)).filter(p => (!postFilter) || p.slug === postFilter);
   const markdownTemplate = await readFile(template, "utf-8");
 
   console.log(`Converting ${posts.length} posts...`);
