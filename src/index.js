@@ -97,7 +97,7 @@ async function run() {
     const markdownContent = htmlToMd(htmlContent);
     const content = insertVariables({
       template: markdownTemplate,
-      variables: { ...post, content: markdownContent },
+      variables: { ...post, content: markdownContent, html: htmlContent },
     });
     const templateExt = template.split(".").reverse()[0];
     await writeFile(`${outputFolder}/index.${templateExt}`, content);
