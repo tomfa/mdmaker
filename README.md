@@ -64,7 +64,7 @@ The URLs are also changed in the `body` of the original data.
 
 Parsers can be found in `parsers` and contain logic for parsing 
 a file into a structured format. If you wish to parse a different 
-structure that wordpress XML, you can add your owner parser in this folder
+structure that wordpress XML, you can add your owner parser
 and specify it with `--parser=YOUR-PARSER`
 
 **Default: `wordpress-xml`**
@@ -73,7 +73,7 @@ If you create your own parser, it should default export a function that accepts
 path of file, and returns a list of an objects with the following keys:
 
 - `author`: The author of the post
-- `body`: The main body of the post
+- `body`: The main body of the post as HTML
 - `date`: The post date
 - `excerpt`: The excerpt of the post
 - `slug`: The url slug of the original post
@@ -91,8 +91,9 @@ The template used can be changed with `--template=my-file.md`
 
 Available variables are:
 - `author`: The author of the post
-- `body`: The markdown generated body of the post
-- `date`: The post date
+- `content`: The markdown generated body of the post
+- `date`: The post date formatted as `yyyy-mm-dd`
 - `excerpt`: The excerpt of the post
 - `slug`: The url slug of the original post
 - `title`: The title of the post
+- `image`: The featured image of the article
