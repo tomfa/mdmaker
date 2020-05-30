@@ -1,7 +1,7 @@
 # md-export
 
 [md-export](https://github.com/tomfa/md-maker) can convert content between formats.
-It comes with parsersand template for converting Wordpress XML to Markdown but you can easily specify your own.
+It comes with parsers and template for converting Wordpress XML to Markdown but you can easily specify your own.
 
 
 ## Installation
