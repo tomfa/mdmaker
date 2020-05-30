@@ -1,7 +1,7 @@
 # md-export
 
 [md-export](https://github.com/tomfa/md-maker) can convert content between formats.
-It comes with parsers and templates for converting Wordpress XML to Markdown or HTML, but you can also specify your own.
+It comes with parsersand template for converting Wordpress XML to Markdown but you can easily specify your own.
 
 
 ## Installation
@@ -14,32 +14,29 @@ yarn add md-export
 // Convert Wordpress xml to markdown
 yarn run mdex export.xml
 
-// Download images references to in text
-yarn run mdex export.xml  --download-images
-
-// Converts Wordpress xml to html
-yarn run mdex export.xml --html
+// Download images references in text
+yarn run mdex export.xml --download-images
 
 // Using your own output template
 yarn run mdex export.xml --template=my-template.md
 
 // ...or your own parser
-yarn run mdex anything.xml --parser=my-soap-parser.js
+yarn run mdex anything.json --parser=my-json-parser.js
 ```
 
-Generated files, and accompanied images scraped from the post are found in the output folder (default: `output`s).
+Generated files, and accompanied images scraped from the post are found in the output folder (default: `output`).
 
 *Instructions for exporting your information from WordPress [can be found here](http://en.support.wordpress.com/export/).*
 
 ## Options
 ```
-yarn convert <input-file> [args]
+yarn run mdex <input-file> [args]
 
 Options:
 
   --version              Show version number                           [boolean]
   
-  -d, --download-images  Downloads images refernces to poot folder.
+  -d, --download-images  Downloads images references to post folder.
                                                                 [default: false]
   
   -f, --folder-format    Format of individual post folder name.
@@ -63,14 +60,32 @@ Options:
   -h, --help             Show help                                     [boolean]
 
 Examples:
-  yarn convert wordpress.xml  generates markdown files based on wordpress xml
+  yarn run mdex wordpress.xml  generates markdown files based on wordpress xml
                               export
 ```
 
+### Post output folder
+
+Each post is put in an own individual folder.
+```
+/2018-11-30-how-to-markdown/index.md
+``` 
+Its folder name can be specified with `--folder-format=YOUR-FORMAT`
+
+**Default: `yyyy-mm-dd-"slug"`** 
+
+Note that quotes are required to surround text that should *not* be formatted as date.
+
+Replaced values are:
+- `author`: The author that created the post 
+- `slug`: The url slug name of the post 
+
+The rest is formatted as dates, using [dateformat](https://www.npmjs.com/package/dateformat). 
+
 ### Images
 
-All linked images in the original post are downloaded and put in the 
-folder belonging to the related markdown file.
+All linked images in the original post from the same domain are downloaded 
+and put in the folder belonging to the related markdown file.
 
 ```
 /2018-11-30-how-to-markdown/index.md
@@ -82,7 +97,7 @@ By default, we download all links from `img src=`, and all linked images
 
 This can be changed with `--filter-images=YOUR-REGEX`
 
-These URLs are also changed in the `body` of the original data.
+These URLs are also changed in the content of the original data. 
 
 ### Templates
 
@@ -115,24 +130,6 @@ Available variables are:
 - `title`: The title of the post
 - `image`: The featured image of the article
 
-### Post output folder
-
-Each post is put in an own individual folder.
-```
-/2018-11-30-how-to-markdown/index.md
-``` 
-Its folder name can be specified with `--folder-format=YOUR-FORMAT`
-
-**Default: `yyyy-mm-dd-"slug"`** 
-
-Note that quotes are required to surround text that should *not* be formatted as date.
-
-Replaced values are:
-- `author`: The author that created the post 
-- `slug`: The url slug name of the post 
-
-The rest is formatted as dates, using [dateformat](https://www.npmjs.com/package/dateformat). 
-
 ### Parsing other inputs
 
 Parsers can be found in in the source code. These contain logic for parsing 
@@ -140,12 +137,13 @@ a file into a structured format. You can add override the parser
 and specify your own with `--parser=YOUR-PARSER`.
 
 If you create your own parser, it should default export a function that accepts
-path of file, and returns a list of an objects. It must return an object, with at least the following keys:
+path of file, and returns a list of an objects. It must return an array of items,
+where each item should have the following keys:
 
-- `body`: The main body of the post as HTML
-- `date`: The post date
-- `slug`: The url slug of the original post
-- `title`: The title of the post
+- `slug`: A slug of the item
+- `date`: date (optional)
+- `content`: Content as HTML (optional)
+
 
 **Note: You can also add more keys. These will be passed on as is to be reused 
 in the template.**
