@@ -5,23 +5,23 @@ It comes with parsers and template for converting Wordpress XML to Markdown but 
 
 
 ## Installation
-```
-yarn add md-export
+```bash
+yarn global add md-export
 ```
 
 ## Usage
 ```
 // Convert Wordpress xml to markdown
-yarn run mdex export.xml
+mdex export.xml
 
 // Download images references in text
-yarn run mdex export.xml --download-images
+mdex export.xml --download-images
 
 // Using your own output template
-yarn run mdex export.xml --template=my-template.md
+mdex export.xml --template=my-template.md
 
 // ...or your own parser
-yarn run mdex anything.json --parser=my-json-parser.js
+mdex anything.json --parser=my-json-parser.js
 ```
 
 Generated files, and accompanied images scraped from the post are found in the output folder (default: `output`).
@@ -30,7 +30,7 @@ Generated files, and accompanied images scraped from the post are found in the o
 
 ## Options
 ```
-yarn run mdex <input-file> [args]
+mdex <input-file> [args]
 
 Options:
 
@@ -60,7 +60,7 @@ Options:
   -h, --help             Show help                                     [boolean]
 
 Examples:
-  yarn run mdex wordpress.xml  generates markdown files based on wordpress xml
+  mdex wordpress.xml  generates markdown files based on wordpress xml
                               export
 ```
 
