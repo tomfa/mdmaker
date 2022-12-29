@@ -24,6 +24,10 @@ async function convertPost({
 
   log.info(`Storing -> ${outputFolder}`);
   await createFolder(outputFolder);
+  if (globalImageFolder) {
+    await createFolder(globalImageFolder);
+  }
+
 
   let htmlContent = post.content;
 
