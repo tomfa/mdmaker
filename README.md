@@ -3,7 +3,15 @@
 [md-export](https://github.com/tomfa/md-maker) can convert content between formats.
 It comes with parsers and template for converting Wordpress XML to Markdown but you can easily specify your own.
 
-## Installation
+## Quick start
+
+```bash
+# Generates frontmatted .md files of wordpress posts
+npx md-export wp-export.xml --download-images
+```
+
+
+### Installation
 
 ```bash
 yarn global add md-export
