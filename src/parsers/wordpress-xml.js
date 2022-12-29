@@ -110,7 +110,7 @@ function parseCategories(post) {
   return xmlCategories
     .filter((c) => c.$.domain === "category")
     .map((c) => c._.trim())
-    .filter((c) => c !== "Uncategorized");
+    .filter((c) => c !== "Uncategorized" && c !== "Ukategorisert");
 }
 
 function parseTags(post) {
@@ -118,7 +118,7 @@ function parseTags(post) {
   return xmlCategories
     .filter((c) => c.$.domain === "post_tag")
     .map((c) => c._.trim())
-    .filter((c) => c !== "Uncategorized");
+    .filter((c) => c !== "Uncategorized" && c !== "Ukategorisert");
 }
 
 function getFeatureId(post) {
