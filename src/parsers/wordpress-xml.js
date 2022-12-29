@@ -59,11 +59,12 @@ function parseXMLAttachment(attachment) {
     slug,
     categories,
     tags,
+    type: 'attachment'
   };
 }
 
 function parseXMLPage(page, getItem) {
-  return parseXMLPost(page, getItem);
+  return {...parseXMLPost(page, getItem), type: 'page' };
 }
 
 function parseXMLPost(post, getItem) {
@@ -99,6 +100,7 @@ function parseXMLPost(post, getItem) {
     slug,
     categories,
     tags,
+    type: 'post'
   };
 }
 
