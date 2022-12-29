@@ -6,18 +6,30 @@ describe("Wordpress XML parser", () => {
 
   let posts;
   let post;
+  let pages;
+  let page;
+  let attachments;
 
   beforeAll(async () => {
-    posts = await parseWordpressXML(path);
-    post = posts[0];
+    const result = await parseWordpressXML(path);
+    posts = result.posts;
+    post = posts[0]
+    pages = result.pages;
+    page = pages[0]
+    attachments = result.attachments;
   });
 
   test("ignores non-post item", () => {
     expect(posts.length).toBe(1);
+    expect(pages.length).toBe(1);
+    expect(attachments.length).toBe(1);
   });
 
-  test("parses content to html", () => {
+  test("parses post content to html", () => {
     expect(post.content).toContain("<li>Search for slack</li>");
+  });
+  test("parses page content to html", () => {
+    expect(page.content).toContain("<strong>Ellingsøya Hornmusikk ble stiftet 1962 og har i 2012 19 medlemmer.</strong>");
   });
 
   test("identifies wordpress title and slug", () => {

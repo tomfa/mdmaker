@@ -1,105 +1,121 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0"
-	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
-	xmlns:content="http://purl.org/rss/1.0/modules/content/"
-	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:wp="http://wordpress.org/export/1.2/"
+     xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:wp="http://wordpress.org/export/1.2/"
 >
 
-<channel>
-	<title>Notes and anecdotes</title>
-	<link>http://notes.webutvikling.org</link>
-	<description>Techstuff rambling</description>
-	<pubDate>Wed, 27 May 2020 21:00:46 +0000</pubDate>
-	<language>en-US</language>
-	<wp:wxr_version>1.2</wp:wxr_version>
-	<wp:base_site_url>http://notes.webutvikling.org</wp:base_site_url>
-	<wp:base_blog_url>http://notes.webutvikling.org</wp:base_blog_url>
+    <channel>
+        <title>Notes and anecdotes</title>
+        <link>http://notes.webutvikling.org</link>
+        <description>Techstuff rambling</description>
+        <pubDate>Wed, 27 May 2020 21:00:46 +0000</pubDate>
+        <language>en-US</language>
+        <wp:wxr_version>1.2</wp:wxr_version>
+        <wp:base_site_url>http://notes.webutvikling.org</wp:base_site_url>
+        <wp:base_blog_url>http://notes.webutvikling.org</wp:base_blog_url>
 
-	<wp:author><wp:author_id>1</wp:author_id><wp:author_login><![CDATA[tomfa]]></wp:author_login><wp:author_email><![CDATA[tomas@webutvikling.org]]></wp:author_email><wp:author_display_name><![CDATA[tomfa]]></wp:author_display_name><wp:author_first_name><![CDATA[]]></wp:author_first_name><wp:author_last_name><![CDATA[]]></wp:author_last_name></wp:author>
+        <wp:author>
+            <wp:author_id>1</wp:author_id>
+            <wp:author_login><![CDATA[tomfa]]></wp:author_login>
+            <wp:author_email>
+                <![CDATA[tomas@webutvikling.org]]></wp:author_email>
+            <wp:author_display_name><![CDATA[tomfa]]></wp:author_display_name>
+            <wp:author_first_name><![CDATA[]]></wp:author_first_name>
+            <wp:author_last_name><![CDATA[]]></wp:author_last_name>
+        </wp:author>
 
-	<wp:tag>
-		<wp:term_id>54</wp:term_id>
-		<wp:tag_slug><![CDATA[freshdesk]]></wp:tag_slug>
-		<wp:tag_name><![CDATA[freshdesk]]></wp:tag_name>
-	</wp:tag>
-	<wp:tag>
-		<wp:term_id>127</wp:term_id>
-		<wp:tag_slug><![CDATA[slack]]></wp:tag_slug>
-		<wp:tag_name><![CDATA[slack]]></wp:tag_name>
-	</wp:tag>
-	<wp:term>
-		<wp:term_id><![CDATA[54]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[post_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[freshdesk]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[freshdesk]]></wp:term_name>
-	</wp:term>
-	<wp:term>
-		<wp:term_id><![CDATA[127]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[post_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[slack]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[slack]]></wp:term_name>
-	</wp:term>
-	<wp:term>
-        <wp:term_id><![CDATA[14]]></wp:term_id>
-        <wp:term_taxonomy><![CDATA[category]]></wp:term_taxonomy>
-        <wp:term_slug><![CDATA[devops]]></wp:term_slug>
-        <wp:term_parent><![CDATA[]]></wp:term_parent>
-        <wp:term_name><![CDATA[DevOps]]></wp:term_name>
-    </wp:term>
-	<wp:term>
-		<wp:term_id><![CDATA[146]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[category]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[slack]]></wp:term_slug>
-		<wp:term_parent><![CDATA[devops]]></wp:term_parent>
-		<wp:term_name><![CDATA[Slack]]></wp:term_name>
-	</wp:term>
+        <wp:tag>
+            <wp:term_id>54</wp:term_id>
+            <wp:tag_slug><![CDATA[freshdesk]]></wp:tag_slug>
+            <wp:tag_name><![CDATA[freshdesk]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>127</wp:term_id>
+            <wp:tag_slug><![CDATA[slack]]></wp:tag_slug>
+            <wp:tag_name><![CDATA[slack]]></wp:tag_name>
+        </wp:tag>
+        <wp:term>
+            <wp:term_id><![CDATA[54]]></wp:term_id>
+            <wp:term_taxonomy><![CDATA[post_tag]]></wp:term_taxonomy>
+            <wp:term_slug><![CDATA[freshdesk]]></wp:term_slug>
+            <wp:term_parent><![CDATA[]]></wp:term_parent>
+            <wp:term_name><![CDATA[freshdesk]]></wp:term_name>
+        </wp:term>
+        <wp:term>
+            <wp:term_id><![CDATA[127]]></wp:term_id>
+            <wp:term_taxonomy><![CDATA[post_tag]]></wp:term_taxonomy>
+            <wp:term_slug><![CDATA[slack]]></wp:term_slug>
+            <wp:term_parent><![CDATA[]]></wp:term_parent>
+            <wp:term_name><![CDATA[slack]]></wp:term_name>
+        </wp:term>
+        <wp:term>
+            <wp:term_id><![CDATA[14]]></wp:term_id>
+            <wp:term_taxonomy><![CDATA[category]]></wp:term_taxonomy>
+            <wp:term_slug><![CDATA[devops]]></wp:term_slug>
+            <wp:term_parent><![CDATA[]]></wp:term_parent>
+            <wp:term_name><![CDATA[DevOps]]></wp:term_name>
+        </wp:term>
+        <wp:term>
+            <wp:term_id><![CDATA[146]]></wp:term_id>
+            <wp:term_taxonomy><![CDATA[category]]></wp:term_taxonomy>
+            <wp:term_slug><![CDATA[slack]]></wp:term_slug>
+            <wp:term_parent><![CDATA[devops]]></wp:term_parent>
+            <wp:term_name><![CDATA[Slack]]></wp:term_name>
+        </wp:term>
 
 
-	<generator>https://wordpress.org/?v=4.7.17</generator>
+        <generator>https://wordpress.org/?v=4.7.17</generator>
 
-	<item>
-		<title>freshdesk</title>
-		<link>http://notes.webutvikling.org/adding-freshdesk-to-slack/freshdesk/</link>
-		<pubDate>Tue, 02 Aug 2016 14:26:32 +0000</pubDate>
-		<dc:creator><![CDATA[tomfa]]></dc:creator>
-		<guid isPermaLink="false">http://notes.webutvikling.org/wp-content/uploads/2016/08/freshdesk.jpg</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>381</wp:post_id>
-		<wp:post_date><![CDATA[2016-08-02 14:26:32]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2016-08-02 14:26:32]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[freshdesk]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>370</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-		<wp:attachment_url><![CDATA[http://notes.webutvikling.org/wp-content/uploads/2016/08/freshdesk.jpg]]></wp:attachment_url>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2016/08/freshdesk.jpg]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-			<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1280;s:6:"height";i:720;s:4:"file";s:21:"2016/08/freshdesk.jpg";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:21:"freshdesk-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:21:"freshdesk-300x169.jpg";s:5:"width";i:300;s:6:"height";i:169;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:21:"freshdesk-768x432.jpg";s:5:"width";i:768;s:6:"height";i:432;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:22:"freshdesk-1024x576.jpg";s:5:"width";i:1024;s:6:"height";i:576;s:9:"mime-type";s:10:"image/jpeg";}s:13:"featured-full";a:4:{s:4:"file";s:21:"freshdesk-750x429.jpg";s:5:"width";i:750;s:6:"height";i:429;s:9:"mime-type";s:10:"image/jpeg";}s:15:"featured-teaser";a:4:{s:4:"file";s:21:"freshdesk-450x253.jpg";s:5:"width";i:450;s:6:"height";i:253;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-		</wp:postmeta>
-	</item>
-	<item>
-		<title>Adding Freshdesk to Slack</title>
-		<link>http://notes.webutvikling.org/adding-freshdesk-to-slack/</link>
-		<pubDate>Tue, 02 Aug 2016 14:18:21 +0000</pubDate>
-		<dc:creator><![CDATA[tomfa]]></dc:creator>
-		<guid isPermaLink="false">http://notes.webutvikling.org/?p=370</guid>
-		<description></description>
-		<content:encoded><![CDATA[Adding slack as an app in Freshdesk allows you to use observers and dispatcher in freshdesk to notify / recieve data from Slack.
+        <item>
+            <title>freshdesk</title>
+            <link>
+                http://notes.webutvikling.org/adding-freshdesk-to-slack/freshdesk/
+            </link>
+            <pubDate>Tue, 02 Aug 2016 14:26:32 +0000</pubDate>
+            <dc:creator><![CDATA[tomfa]]></dc:creator>
+            <guid isPermaLink="false">
+                http://notes.webutvikling.org/wp-content/uploads/2016/08/freshdesk.jpg
+            </guid>
+            <description></description>
+            <content:encoded><![CDATA[]]></content:encoded>
+            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+            <wp:post_id>381</wp:post_id>
+            <wp:post_date><![CDATA[2016-08-02 14:26:32]]></wp:post_date>
+            <wp:post_date_gmt><![CDATA[2016-08-02 14:26:32]]></wp:post_date_gmt>
+            <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+            <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+            <wp:post_name><![CDATA[freshdesk]]></wp:post_name>
+            <wp:status><![CDATA[inherit]]></wp:status>
+            <wp:post_parent>370</wp:post_parent>
+            <wp:menu_order>0</wp:menu_order>
+            <wp:post_type><![CDATA[attachment]]></wp:post_type>
+            <wp:post_password><![CDATA[]]></wp:post_password>
+            <wp:is_sticky>0</wp:is_sticky>
+            <wp:attachment_url>
+                <![CDATA[http://notes.webutvikling.org/wp-content/uploads/2016/08/freshdesk.jpg]]></wp:attachment_url>
+            <wp:postmeta>
+                <wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+                <wp:meta_value><![CDATA[2016/08/freshdesk.jpg]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+                <wp:meta_value>
+                    <![CDATA[a:5:{s:5:"width";i:1280;s:6:"height";i:720;s:4:"file";s:21:"2016/08/freshdesk.jpg";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:21:"freshdesk-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:21:"freshdesk-300x169.jpg";s:5:"width";i:300;s:6:"height";i:169;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:21:"freshdesk-768x432.jpg";s:5:"width";i:768;s:6:"height";i:432;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:22:"freshdesk-1024x576.jpg";s:5:"width";i:1024;s:6:"height";i:576;s:9:"mime-type";s:10:"image/jpeg";}s:13:"featured-full";a:4:{s:4:"file";s:21:"freshdesk-750x429.jpg";s:5:"width";i:750;s:6:"height";i:429;s:9:"mime-type";s:10:"image/jpeg";}s:15:"featured-teaser";a:4:{s:4:"file";s:21:"freshdesk-450x253.jpg";s:5:"width";i:450;s:6:"height";i:253;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+        <item>
+            <title>Adding Freshdesk to Slack</title>
+            <link>http://notes.webutvikling.org/adding-freshdesk-to-slack/
+            </link>
+            <pubDate>Tue, 02 Aug 2016 14:18:21 +0000</pubDate>
+            <dc:creator><![CDATA[tomfa]]></dc:creator>
+            <guid isPermaLink="false">http://notes.webutvikling.org/?p=370
+            </guid>
+            <description></description>
+            <content:encoded><![CDATA[Adding slack as an app in Freshdesk allows you to use observers and dispatcher in freshdesk to notify / recieve data from Slack.
 
 <strong>First, add Slack as an app to Freshdesk</strong>
 <ol>
@@ -110,34 +126,75 @@
  	<li>Add it to your team and channel</li>
 </ol>
 There you go. There's also possible to create tickets from slack, but that's not very useful for me, so I'll just refer to the <a href="https://support.freshdesk.com/support/solutions/articles/206103-the-slack-app">Freshdesk docs </a>for that.]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>370</wp:post_id>
-		<wp:post_date><![CDATA[2016-08-02 14:18:21]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2016-08-02 14:18:21]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[open]]></wp:ping_status>
-		<wp:post_name><![CDATA[adding-freshdesk-to-slack]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[post]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-		<category domain="post_tag" nicename="freshdesk"><![CDATA[freshdesk]]></category>
-		<category domain="post_tag" nicename="slack"><![CDATA[slack]]></category>
-		<category domain="category" nicename="slack"><![CDATA[Slack]]></category>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_oembed_61a0d1b70b7a62d7baee897bd8f85e93]]></wp:meta_key>
-			<wp:meta_value><![CDATA[{{unknown}}]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[381]]></wp:meta_value>
-		</wp:postmeta>
-	</item>
-</channel>
+            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+            <wp:post_id>370</wp:post_id>
+            <wp:post_date><![CDATA[2016-08-02 14:18:21]]></wp:post_date>
+            <wp:post_date_gmt><![CDATA[2016-08-02 14:18:21]]></wp:post_date_gmt>
+            <wp:comment_status><![CDATA[open]]></wp:comment_status>
+            <wp:ping_status><![CDATA[open]]></wp:ping_status>
+            <wp:post_name><![CDATA[adding-freshdesk-to-slack]]></wp:post_name>
+            <wp:status><![CDATA[publish]]></wp:status>
+            <wp:post_parent>0</wp:post_parent>
+            <wp:menu_order>0</wp:menu_order>
+            <wp:post_type><![CDATA[post]]></wp:post_type>
+            <wp:post_password><![CDATA[]]></wp:post_password>
+            <wp:is_sticky>0</wp:is_sticky>
+            <category domain="post_tag" nicename="freshdesk">
+                <![CDATA[freshdesk]]></category>
+            <category domain="post_tag" nicename="slack">
+                <![CDATA[slack]]></category>
+            <category domain="category" nicename="slack">
+                <![CDATA[Slack]]></category>
+            <wp:postmeta>
+                <wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+                <wp:meta_value><![CDATA[1]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>
+                    <![CDATA[_oembed_61a0d1b70b7a62d7baee897bd8f85e93]]></wp:meta_key>
+                <wp:meta_value><![CDATA[{{unknown}}]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+                <wp:meta_value><![CDATA[381]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+        <item>
+            <title><![CDATA[Om korpset]]></title>
+            <link>http://www.sedak.no/ellingshorn/?page_id=2</link>
+            <pubDate>Thu, 05 Jan 2012 22:57:00 +0000</pubDate>
+            <dc:creator><![CDATA[tomfa]]></dc:creator>
+            <guid isPermaLink="false">
+                http://www.sedak.no/ellingshorn/?page_id=2
+            </guid>
+            <description></description>
+            <content:encoded><![CDATA[<strong>Ellingsøya Hornmusikk ble stiftet 1962 og har i 2012 19 medlemmer.</strong>
+
+<address>Korpset spiller variert, tradisjonell korpsmusikk og har øving hver mandag fra 19:00 til 21:00 på VIk skule. Korpset har vanligvis 2 konserter årlig og en stor Julenattinè i samarbeid med kirkekoret. Musikalske gjester frå lokalmiljøet og spesielt inviterte følger oss på Julenattièen.</address><address>Magne Fremnmerlid var "rosinen i pølsa" på Julenattineen 2010:</address><address><a href="http://www.sedak.no/ellingshorn/wp-content/uploads/2012/01/RAL.00908-0031.jpg"><img class="alignnone size-medium wp-image-118" title="RAL.00908-0031" src="http://www.sedak.no/ellingshorn/wp-content/uploads/2012/01/RAL.00908-0031-300x199.jpg" alt="" width="300" height="199" /></a></address><address>Formann i jubileumsåret er Per- Svein Bjørge, tlf 7015 6025</address><address>Litt av korpsets historie finner du <a href="http://www.sedak.no/ellingshorn/?page_id=76">her</a></address>]]></content:encoded>
+            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+            <wp:post_id>2</wp:post_id>
+            <wp:post_date><![CDATA[2012-01-05 22:57:00]]></wp:post_date>
+            <wp:post_date_gmt><![CDATA[2012-01-05 22:57:00]]></wp:post_date_gmt>
+            <wp:post_modified><![CDATA[2012-03-12 06:39:38]]></wp:post_modified>
+            <wp:post_modified_gmt>
+                <![CDATA[2012-03-12 05:39:38]]></wp:post_modified_gmt>
+            <wp:comment_status><![CDATA[open]]></wp:comment_status>
+            <wp:ping_status><![CDATA[open]]></wp:ping_status>
+            <wp:post_name><![CDATA[testside]]></wp:post_name>
+            <wp:status><![CDATA[publish]]></wp:status>
+            <wp:post_parent>0</wp:post_parent>
+            <wp:menu_order>5</wp:menu_order>
+            <wp:post_type><![CDATA[page]]></wp:post_type>
+            <wp:post_password><![CDATA[]]></wp:post_password>
+            <wp:is_sticky>0</wp:is_sticky>
+            <wp:postmeta>
+                <wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+                <wp:meta_value><![CDATA[default]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+                <wp:meta_value><![CDATA[2]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+    </channel>
 </rss>
