@@ -19,7 +19,8 @@ async function convertPost({
   const baseUrl = urlUtils.findBaseUrl(post.url);
   log.debug(`Converting post: ${post.url}`);
   const postFolder = getFolderName(post, folderFormat);
-  const outputFolder = globalImageFolder || `${outputDir}/${postFolder}`;
+  const outputFolder = `${outputDir}/${postFolder}`;
+  const imageFolder = globalImageFolder || outputFolder;
 
   log.info(`Storing -> ${outputFolder}`);
   await createFolder(outputFolder);
@@ -41,7 +42,7 @@ async function convertPost({
     log.debug(`Found ${fileUrls.length} images with baseUrl ${baseUrl}`);
 
     // Download files
-    await downloadFiles({ urls: fileUrls, to: outputFolder, log });
+    await downloadFiles({ urls: fileUrls, to: imageFolder, log });
 
     // Make downloaded files references as local files
     post.image = urlUtils.makeUrlRelative({ url: post.image });
