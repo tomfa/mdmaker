@@ -17,7 +17,7 @@ const argv = require("yargs")
   )
   .example(
     "mdex wordpress.xml -d",
-    "Downloads linked images (hosted on same domain)"
+    "Downloads linked images (hosted on same domain) to same folder as post."
   )
   .example('mdex export.xml --template=my-template.mdx', 'Export content to custom template. See also --template-args.')
   .describe('template-args', 'Print args available in custom template')

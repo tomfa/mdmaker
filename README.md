@@ -10,17 +10,18 @@ yarn global add md-export
 ```
 
 ## Usage
-```
-// Convert Wordpress xml to markdown
+
+```bash
+# Convert Wordpress xml to markdown
 mdex export.xml
 
-// Download images references in text
+# Download images references in text
 mdex export.xml --download-images
 
-// Using your own output template
+# Using your own output template
 mdex export.xml --template=my-template.md
 
-// ...or your own parser
+# ...or your own parser
 mdex anything.json --parser=my-json-parser.js
 ```
 
@@ -29,7 +30,8 @@ Generated files, and accompanied images scraped from the post are found in the o
 *Instructions for exporting your information from WordPress [can be found here](http://en.support.wordpress.com/export/).*
 
 ## Options
-```
+
+```bash
 mdex <input-file> [args]
 
 Options:
@@ -37,8 +39,10 @@ Options:
   --version              Show version number                           [boolean]
   
   -d, --download-images  Downloads images references to post folder.
-                                                                [default: false]
-  
+                                                      [boolean] [default: false]
+
+  --debug                Log for debug purposes       [boolean] [default: false]
+
   -f, --folder-format    Format of individual post folder name.
                                                   [default: "yyyy-mm-dd-"slug""]
   
@@ -60,8 +64,8 @@ Options:
   -h, --help             Show help                                     [boolean]
 
 Examples:
-  mdex wordpress.xml  generates markdown files based on wordpress xml
-                              export
+  mdex wordpress.xml     Generates markdown files based on wordpress xml export
+  mdex wordpress.xml -d  Downloads linked images (hosted on same domain)
 ```
 
 ### Post output folder
@@ -84,12 +88,21 @@ The rest is formatted as dates, using [dateformat](https://www.npmjs.com/package
 
 ### Images
 
-All linked images in the original post from the same domain are downloaded 
-and put in the folder belonging to the related markdown file.
+All linked images in the original post from the same domain are downloaded
+and put in the folder belonging to the related markdown file, when `-d` is used
 
 ```
 /2018-11-30-how-to-markdown/index.md
 /2018-11-30-how-to-markdown/image-for-the-post.jpg
+/2018-11-30-how-to-markdown/another-image.jpg
+```
+
+You can download all images to a shared folder by specifying `-g=./public/images`.
+
+```
+/2018-11-30-how-to-markdown/index.md
+/public/images/image-for-the-post.jpg
+/public/images/another-image.jpg
 ```
 
 By default, we download all links from `img src=`, and all linked images 
