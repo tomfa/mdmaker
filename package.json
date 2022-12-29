@@ -3,7 +3,7 @@
   "name": "md-export",
   "description": "Customizable parse + convert text",
   "license": "MIT",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "keywords": [
     "convert",
     "generate",
