@@ -1,12 +1,13 @@
 const fs = require("fs");
 const http = require("http");
 const https = require("https");
+const logger = require('./logger')
 
 const { makePromise } = require("./promiser");
 
 const FileWriteException = require("./errors").FileWriteException;
 
-function downloadFiles({ urls, to }) {
+async function downloadFiles({ urls, to, log }) {
   if (!urls || urls.length < 1) {
     return [];
   } else if (!to) {
@@ -19,14 +20,15 @@ function downloadFiles({ urls, to }) {
     return { url, path };
   });
 
-  files.forEach(downloadFile);
+  await Promise.all(files.map(({ url, path}) => downloadFile({ url, path, log })));
 
   return files;
 }
 
-async function downloadFile({ url, path }) {
+async function downloadFile({ url, path, log }) {
   return new Promise((resolve, reject) => {
     try {
+      log.debug(`Downloading ${url} -> ${path}`)
       const file = fs.createWriteStream(path);
       const web = url.startsWith("https") ? https : http;
       web
@@ -41,6 +43,8 @@ async function downloadFile({ url, path }) {
           reject(err.message);
         });
     } catch (error) {
+      log.info(`Errored while downloading ${url} to ${path}`)
+      log.info(error)
       reject(error);
     }
   });

@@ -3,6 +3,7 @@ const urlUtils = require("./utils/urls");
 const { getFolderName, createFolder } = require("./utils/folders");
 const { htmlToMd } = require("./utils/markdown");
 const { insertVariables } = require("./utils/templates");
+const logger = require("./utils/logger");
 
 async function convertPost({
   post,
@@ -13,11 +14,13 @@ async function convertPost({
   downloadImages,
   filterImages,
 }) {
+  const log = logger.createLogger(`(${post.title})`);
   const baseUrl = urlUtils.findBaseUrl(post.url);
+  log.debug(`Converting post: ${post.url}`)
   const postFolder = getFolderName(post, folderFormat);
   const outputFolder = `${outputDir}/${postFolder}`;
 
-  console.log(`Converting ${post.slug} -> ${outputDir}`);
+  log.info(`Storing -> ${outputFolder}`);
   await createFolder(outputFolder);
 
   let htmlContent = post.content;
@@ -34,9 +37,10 @@ async function convertPost({
       filterDomain: baseUrl,
       regexp: filterImages,
     });
+    log.debug(`Found ${fileUrls.length} images with baseUrl ${baseUrl}`)
 
     // Download files
-    downloadFiles({ urls: fileUrls, to: outputFolder });
+    await downloadFiles({ urls: fileUrls, to: outputFolder, log });
 
     // Make downloaded files references as local files
     post.image = urlUtils.makeUrlRelative({ url: post.image });
@@ -69,12 +73,25 @@ async function convert({
   downloadImages,
   filterImages,
 }) {
+  logger.debug(`Parsing input`, inputFile);
+  if (slugFilter) {
+    logger.debug("...filtering posts by slug", slugFilter);
+  }
   const posts = (await parser(inputFile)).filter(
     (p) => !slugFilter || p.slug === slugFilter
   );
+
+  logger.debug(`Loading template`, templatePath);
   const template = await readFile(templatePath, "utf-8");
 
-  console.log(`Converting ${posts.length} posts...`);
+  logger.debug("Using options:", {
+    outputDir,
+    folderFormat,
+    downloadImages,
+    filterImages,
+  });
+  logger.info(`Converting ${posts.length} posts...`);
+
   await Promise.all(
     posts.map(async (post) =>
       convertPost({

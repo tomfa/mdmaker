@@ -7,17 +7,25 @@ const urlUtils = require("../src/utils/urls");
 
 const defaultParser = "./parsers/wordpress-xml";
 const defaultTemplate = "./templates/gatsby.md";
+const logger = require('../src/utils/logger')
 
 const argv = require("yargs")
   .usage("yarn convert <input-file> [args]")
   .example(
     "yarn convert wordpress.xml",
-    "generates markdown files based on wordpress xml export"
+    "Generates markdown files based on wordpress xml export"
+  )
+  .example(
+    "yarn convert wordpress.xml -d",
+    "Downloads linked images (hosted on same domain)"
   )
   .alias("d", "download-images")
   .default("d", false)
   .describe("d", "Downloads images refernces to poot folder.")
-  .boolean('d')
+  .boolean("d")
+  .describe("debug", "Log for debug purposes")
+  .default("debug", false)
+  .boolean("debug")
   .alias("f", "folder-format")
   .default("f", 'yyyy-mm-dd-"slug"')
   .describe("f", "Format of individual post folder name.")
@@ -41,9 +49,12 @@ const argv = require("yargs")
   .help("h")
   .alias("h", "help").argv;
 
-const parser = require(argv.parser !== defaultParser
+logger.setDebug(argv.debug);
+
+const parsePath = argv.parser !== defaultParser
   ? resolve(process.cwd(), argv.parser)
-  : resolve(__dirname, `../src/${argv.parser}`));
+  : resolve(__dirname, `../src/${argv.parser}`);
+
 
 const template =
   argv.template !== defaultTemplate
@@ -54,9 +65,13 @@ const { downloadImages, folderFormat, filterImages, outputDir, slug } = argv;
 const inputArg = (argv._.length && argv._[0]) || null;
 
 if (!inputArg) {
-  console.log("Missing input file. Run with --help for assistance.");
+  logger.info("Missing input file. Run with --help for assistance.");
   return;
 }
+
+logger.debug(`Using parser: ${parsePath}`);
+const parser = require(parsePath);
+
 
 const inputFile = resolve(process.cwd(), inputArg);
 
