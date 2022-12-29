@@ -116,7 +116,7 @@ async function convert({
         post,
         template,
         templatePath,
-        outputDir,
+        outputDir: `${outputDir}/posts`,
         folderFormat,
         downloadImages,
         filterImages,
