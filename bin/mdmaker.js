@@ -35,6 +35,8 @@ const argv = require("yargs")
   .alias("o", "output-dir")
   .default("o", "output")
   .describe("o", "Folder in which to put posts")
+  .alias("g", "global-image-folder")
+  .describe("g", "Specify a path to download all images to. Requires -d")
   .alias("i", "filter-images")
   .default("i", urlUtils.defaultRegex)
   .describe(
@@ -75,7 +77,7 @@ if (argv.templateArgs) {
   logger.info('  {{ content }}  Content of post in .md format\n')
 }
 
-const { downloadImages, folderFormat, filterImages, outputDir, slug } = argv;
+const { downloadImages, folderFormat, filterImages, outputDir, slug, globalImageFolder } = argv;
 const inputArg = (argv._.length && argv._[0]) || null;
 
 if (!inputArg) {
@@ -83,9 +85,13 @@ if (!inputArg) {
   return;
 }
 
+if (globalImageFolder && !downloadImages) {
+  logger.info("Can not specify --global-image-folder with --download-images=false")
+  return;
+}
+
 logger.debug(`Using parser: ${parsePath}`);
 const parser = require(parsePath);
-
 
 const inputFile = resolve(process.cwd(), inputArg);
 
@@ -98,4 +104,5 @@ run({
   parser,
   slugFilter: slug,
   templatePath: template,
+  globalImageFolder
 });

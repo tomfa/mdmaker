@@ -13,12 +13,13 @@ async function convertPost({
   folderFormat,
   downloadImages,
   filterImages,
+  globalImageFolder,
 }) {
   const log = logger.createLogger(`(${post.title})`);
   const baseUrl = urlUtils.findBaseUrl(post.url);
-  log.debug(`Converting post: ${post.url}`)
+  log.debug(`Converting post: ${post.url}`);
   const postFolder = getFolderName(post, folderFormat);
-  const outputFolder = `${outputDir}/${postFolder}`;
+  const outputFolder = globalImageFolder || `${outputDir}/${postFolder}`;
 
   log.info(`Storing -> ${outputFolder}`);
   await createFolder(outputFolder);
@@ -72,6 +73,7 @@ async function convert({
   folderFormat,
   downloadImages,
   filterImages,
+  globalImageFolder,
 }) {
   logger.debug(`Parsing input`, inputFile);
   if (slugFilter) {
@@ -89,6 +91,7 @@ async function convert({
     folderFormat,
     downloadImages,
     filterImages,
+    globalImageFolder: downloadImages && globalImageFolder,
   });
   logger.info(`Converting ${posts.length} posts...`);
 
@@ -102,6 +105,7 @@ async function convert({
         folderFormat,
         downloadImages,
         filterImages,
+        globalImageFolder,
       })
     )
   );
