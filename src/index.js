@@ -48,11 +48,12 @@ async function convertPost({
     // Download files
     await downloadFiles({ urls: fileUrls, to: imageFolder, log });
 
+    const imagePathPrefix = globalImageFolder ? `/${globalImageFolder}/` : `./`;
     // Make downloaded files references as local files
-    post.image = urlUtils.makeUrlRelative({ url: post.image });
+    post.image = urlUtils.makeUrlRelative({ url: post.image, pathPrefix: imagePathPrefix });
     const urlMapping = fileUrls.map((url) => ({
       external: url,
-      internal: urlUtils.makeUrlRelative({ url }),
+      internal: urlUtils.makeUrlRelative({ url, pathPrefix: imagePathPrefix }),
     }));
     urlMapping.forEach(
       (m) => (htmlContent = htmlContent.replace(m.external, m.internal))
