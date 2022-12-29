@@ -12,17 +12,17 @@ async function process(path) {
     const xmlData = result.rss.channel[0].item;
     const getItem = (itemId) =>
       xmlData.find((d) => d["wp:post_id"].includes(itemId));
-    const posts = xmlData.filter(
-      (item) => item["wp:post_type"][0] === "post"
-    ).map((post) => parseXMLPost(post, getItem));
-    const pages = xmlData.filter(
-      (item) => item["wp:post_type"][0] === "page"
-    ).map(page => parseXMLPage(page, getItem));
-    const attachments = xmlData.filter(
-      (item) => item["wp:post_type"][0] === "attachment"
-    ).map(attachment => parseXMLAttachment(attachment));
+    const posts = xmlData
+      .filter((item) => item["wp:post_type"][0] === "post")
+      .map((post) => parseXMLPost(post, getItem));
+    const pages = xmlData
+      .filter((item) => item["wp:post_type"][0] === "page")
+      .map((page) => parseXMLPage(page, getItem));
+    const attachments = xmlData
+      .filter((item) => item["wp:post_type"][0] === "attachment")
+      .map((attachment) => parseXMLAttachment(attachment));
 
-    return { posts, pages, attachments }
+    return { posts, pages, attachments };
   } catch (err) {
     throw new ParseException(`Unable to read ${path}: ${err}`);
   }
@@ -59,12 +59,12 @@ function parseXMLAttachment(attachment) {
     slug,
     categories,
     tags,
-    type: 'attachment'
+    type: "attachment",
   };
 }
 
 function parseXMLPage(page, getItem) {
-  return {...parseXMLPost(page, getItem), type: 'page' };
+  return { ...parseXMLPost(page, getItem), type: "page", subfolder: "" };
 }
 
 function parseXMLPost(post, getItem) {
@@ -100,7 +100,8 @@ function parseXMLPost(post, getItem) {
     slug,
     categories,
     tags,
-    type: 'post'
+    type: "post",
+    subfolder: "posts",
   };
 }
 
