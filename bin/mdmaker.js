@@ -10,17 +10,17 @@ const defaultTemplate = "./templates/gatsby.md";
 const logger = require("../src/utils/logger");
 
 const argv = require("yargs")
-  .usage("mdex <input-file> [args]")
+  .usage("md-export <input-file> [args]")
   .example(
-    "mdex wordpress.xml",
+    "md-export wordpress.xml",
     "Generates markdown files based on wordpress xml export"
   )
   .example(
-    "mdex wordpress.xml -d",
+    "md-export wordpress.xml -d",
     "Downloads linked images (hosted on same domain) to same folder as post."
   )
   .example(
-    "mdex export.xml --template=my-template.mdx",
+    "md-export export.xml --template=my-template.mdx",
     "Export content to custom template. See also --template-args."
   )
   .describe("template-args", "Print args available in custom template")

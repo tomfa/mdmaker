@@ -24,7 +24,7 @@
     "node": ">=10.12"
   },
   "bin": {
-    "mdex": "./bin/mdmaker.js"
+    "md-export": "./bin/mdmaker.js"
   },
   "main": "src/index.js",
   "dependencies": {

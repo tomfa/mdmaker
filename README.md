@@ -13,16 +13,16 @@ yarn global add md-export
 
 ```bash
 # Convert Wordpress xml to markdown
-mdex export.xml
+md-export export.xml
 
 # Download images references in text
-mdex export.xml --download-images
+md-export export.xml --download-images
 
 # Using your own output template
-mdex export.xml --template=my-template.md
+md-export export.xml --template=my-template.md
 
 # ...or your own parser
-mdex anything.json --parser=my-json-parser.js
+md-export anything.json --parser=my-json-parser.js
 ```
 
 Generated files, and accompanied images scraped from the post are found in the output folder (default: `output`).
@@ -32,7 +32,7 @@ _Instructions for exporting your information from WordPress [can be found here](
 ## Options
 
 ```bash
-mdex <input-file> [args]
+md-export <input-file> [args]
 
 Options:
   --version              Show version number                           [boolean]
@@ -62,8 +62,8 @@ Options:
   -h, --help             Show help                                     [boolean]
 
 Examples:
-  mdex wordpress.xml     Generates markdown files based on wordpress xml export
-  mdex wordpress.xml -d  Downloads linked images (hosted on same domain)
+  md-export wordpress.xml     Generates markdown files based on wordpress xml export
+  md-export wordpress.xml -d  Downloads linked images (hosted on same domain)
 ```
 
 ### Post output folder
