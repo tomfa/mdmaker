@@ -7,7 +7,6 @@ const logger = require("./utils/logger");
 
 async function convertPost({
   post,
-  page,
   template,
   templatePath,
   outputDir,
@@ -16,14 +15,13 @@ async function convertPost({
   filterImages,
   globalImageFolder,
 }) {
-  const data = post || page;
-  if (!data) {
+  if (!post) {
     throw new Error(`Attempting to convert without specifying page or post`)
   }
-  const log = logger.createLogger(`(${data.title})`);
-  const baseUrl = urlUtils.findBaseUrl(data.url);
-  log.debug(`Converting ${post ? 'post' : 'page'}: ${data.url}`);
-  const postFolder = getFolderName(data, folderFormat);
+  const log = logger.createLogger(`(${post.title})`);
+  const baseUrl = urlUtils.findBaseUrl(post.url);
+  log.debug(`Converting ${post ? 'post' : 'page'}: ${post.url}`);
+  const postFolder = getFolderName(post, folderFormat);
   const outputFolder = `${outputDir}/${postFolder}`;
   const imageFolder = globalImageFolder || outputFolder;
 
@@ -33,18 +31,17 @@ async function convertPost({
     await createFolder(globalImageFolder);
   }
 
-
-  let htmlContent = data.content;
+  let htmlContent = post.content;
 
   if (downloadImages) {
     // Find files to download
     htmlContent = urlUtils.makeUrlsAbsolute({
-      content: data.content,
-      path: data.url,
+      content: post.content,
+      path: post.url,
     });
 
     const fileUrls = urlUtils.extractUrls({
-      content: htmlContent + (data.image ? ` <img src="${data.image}" />` : ""),
+      content: htmlContent + (post.image ? ` <img src="${post.image}" />` : ""),
       filterDomain: baseUrl,
       regexp: filterImages,
     });
@@ -55,7 +52,7 @@ async function convertPost({
 
     const imagePathPrefix = globalImageFolder ? `/${globalImageFolder}/` : `./`;
     // Make downloaded files references as local files
-    data.image = urlUtils.makeUrlRelative({ url: data.image, pathPrefix: imagePathPrefix });
+    post.image = urlUtils.makeUrlRelative({ url: post.image, pathPrefix: imagePathPrefix });
     const urlMapping = fileUrls.map((url) => ({
       external: url,
       internal: urlUtils.makeUrlRelative({ url, pathPrefix: imagePathPrefix }),
@@ -69,7 +66,7 @@ async function convertPost({
   const markdownContent = htmlToMd(htmlContent);
   const content = insertVariables({
     template,
-    variables: { ...data, content: markdownContent, html: htmlContent },
+    variables: { ...post, content: markdownContent, html: htmlContent },
   });
   const templateExt = templatePath.split(".").reverse()[0];
   await writeFile(`${outputFolder}/index.${templateExt}`, content);
@@ -108,27 +105,12 @@ async function convert({
     filterImages,
     globalImageFolder: downloadImages && globalImageFolder,
   });
-  logger.info(`Converting ${posts.length} posts...`);
+  logger.info(`Converting ${posts.length} posts and ${pages.length} pages...`);
 
   await Promise.all(
-    posts.map(async (post) =>
+    [...posts, ...pages].map(async (post) =>
       convertPost({
         post,
-        template,
-        templatePath,
-        outputDir: `${outputDir}/posts`,
-        folderFormat,
-        downloadImages,
-        filterImages,
-        globalImageFolder,
-      })
-    )
-  );
-
-  await Promise.all(
-    pages.map(async (page) =>
-      convertPost({
-        page,
         template,
         templatePath,
         outputDir,
