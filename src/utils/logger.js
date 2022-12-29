@@ -8,10 +8,10 @@ const createLogger = (prefix) => {
       if (!debugLog) {
         return;
       }
-      log(...args)
+      log(...args);
     },
-  }
-}
+  };
+};
 
 const defaultLogger = createLogger();
 
@@ -19,5 +19,5 @@ module.exports = {
   setDebug: (val) => (debugLog = val),
   info: defaultLogger.info,
   debug: defaultLogger.debug,
-  createLogger
+  createLogger,
 };

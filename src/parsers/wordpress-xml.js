@@ -28,13 +28,16 @@ function parseXMLPost(post, getItem) {
   const title = post.title[0];
   let publishedDate = new Date(post.pubDate);
   if (isNaN(publishedDate)) {
-    publishedDate = new Date(post['wp:post_date']);
+    publishedDate = new Date(post["wp:post_date"]);
   }
   const content = post["content:encoded"][0];
   const status = post["wp:status"][0];
   let slug = post["wp:post_name"][0];
   if (!slug) {
-    slug = post.title[0].toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')
+    slug = post.title[0]
+      .toLowerCase()
+      .replace(/ /g, "-")
+      .replace(/[^\w-]+/g, "");
   }
   const image = parseFeaturedImageUrl(post, getItem);
 

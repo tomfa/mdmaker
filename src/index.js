@@ -38,7 +38,7 @@ async function convertPost({
       filterDomain: baseUrl,
       regexp: filterImages,
     });
-    log.debug(`Found ${fileUrls.length} images with baseUrl ${baseUrl}`)
+    log.debug(`Found ${fileUrls.length} images with baseUrl ${baseUrl}`);
 
     // Download files
     await downloadFiles({ urls: fileUrls, to: outputFolder, log });

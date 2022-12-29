@@ -39,6 +39,7 @@
   },
   "scripts": {
     "patch-release": "npm test && npm version patch && npm publish && git push --follow-tags",
+    "lint:fix": "prettier --version && prettier --write \"**/*.{js,jsx,ts,tsx,json,mdx,md}\"",
     "test": "jest",
     "tdd": "jest --watch"
   }
