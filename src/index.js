@@ -70,6 +70,7 @@ async function convertPost({
   });
   const templateExt = templatePath.split(".").reverse()[0];
   await writeFile(`${outputFolder}/index.${templateExt}`, content);
+  return {...post, path: postFolder }
 }
 
 async function convert({
@@ -107,7 +108,7 @@ async function convert({
   });
   logger.info(`Converting ${posts.length} posts and ${pages.length} pages...`);
 
-  await Promise.all(
+  const metadata = await Promise.all(
     [...posts, ...pages].map(async (post) =>
       convertPost({
         post,
@@ -121,6 +122,9 @@ async function convert({
       })
     )
   );
+
+  logger.info(`Writing metadata file to ${outputDir}/meta.json`)
+  await writeFile(`${outputDir}/meta.json`, JSON.stringify(metadata));
 }
 
 module.exports = convert;
