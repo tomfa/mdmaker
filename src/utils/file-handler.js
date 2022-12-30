@@ -31,6 +31,10 @@ async function downloadFile({ url, path, log }) {
   log.debug(`Downloading ${url} -> ${path}`);
   return new Promise((resolve, reject) => {
     try {
+      if (fs.existsSync(path)) {
+        log.debug(`file ${path} already exists. Skipping download`);
+        return resolve();
+      }
       const file = fs.createWriteStream(path);
       const web = url.startsWith("https") ? https : http;
       web
