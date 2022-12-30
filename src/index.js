@@ -20,7 +20,7 @@ async function convertPost({
   }
   const log = logger.createLogger(`(${post.title})`);
   const baseUrl = urlUtils.findBaseUrl(post.url);
-  log.debug(`Converting ${post ? 'post' : 'page'}: ${post.url}`);
+  log.debug(`Converting post: ${post.url}`);
   const postFolder = getFolderName(post, folderFormat);
   const outputFolder = `${outputDir}/${postFolder}`;
   const imageFolder = globalImageFolder || outputFolder;
@@ -52,7 +52,10 @@ async function convertPost({
 
     const imagePathPrefix = globalImageFolder ? `/${globalImageFolder}/` : `./`;
     // Make downloaded files references as local files
-    post.image = urlUtils.makeUrlRelative({ url: post.image, pathPrefix: imagePathPrefix });
+    post.image = urlUtils.makeUrlRelative({
+      url: post.image,
+      pathPrefix: imagePathPrefix,
+    });
     const urlMapping = fileUrls.map((url) => ({
       external: url,
       internal: urlUtils.makeUrlRelative({ url, pathPrefix: imagePathPrefix }),
@@ -64,13 +67,19 @@ async function convertPost({
 
   // Write as markdown
   const markdownContent = htmlToMd(htmlContent);
+  const variables = {
+    ...post,
+    path: postFolder,
+    html: htmlContent,
+    markdown: markdownContent,
+  };
   const content = insertVariables({
     template,
-    variables: { ...post, content: markdownContent, html: htmlContent },
+    variables,
   });
   const templateExt = templatePath.split(".").reverse()[0];
   await writeFile(`${outputFolder}/index.${templateExt}`, content);
-  return {...post, path: postFolder }
+  return variables;
 }
 
 async function convert({
