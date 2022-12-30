@@ -64,7 +64,7 @@ function parseXMLAttachment(attachment) {
 }
 
 function parseXMLPage(page, getItem) {
-  return { ...parseXMLPost(page, getItem), type: "page", subfolder: "" };
+  return { ...parseXMLPost(page, getItem), type: "page", subfolder: "pages" };
 }
 
 function parseXMLPost(post, getItem) {
